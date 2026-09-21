@@ -1,0 +1,226 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom modern sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@media print {
+  /* Hide non-printable elements */
+  .no-print,
+  button,
+  input,
+  select,
+  nav,
+  aside,
+  header.no-print,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure root container and body stay visible and printable */
+  html, body, #root {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Force background colors to print for professional ERP look */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Handle fixed backdrop modals gracefully during printing */
+  .fixed.inset-0,
+  .fixed.inset-0.z-\[100\] {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    display: block !important;
+    z-index: 1 !important;
+  }
+
+  /* Printable card containers reset for standard paper output */
+  .print-full-card,
+  #printable-area,
+  .printable-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    z-index: 10 !important;
+  }
+
+  /* Specific color enforcement for print */
+  .text-emerald-600, .text-emerald-700 { color: #059669 !important; }
+  .text-rose-600, .text-rose-700 { color: #e11d48 !important; }
+  .text-blue-600, .text-blue-700 { color: #2563eb !important; }
+  .bg-slate-900 { background-color: #0f172a !important; color: white !important; }
+  .bg-emerald-50 { background-color: #ecfdf5 !important; }
+  .bg-rose-50 { background-color: #fff1f2 !important; }
+
+  /* Classic Financial Tables Print Optimization */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+}
+
+/* Classic ERP Financial Table Standard */
+.table-classic {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 0.875rem;
+}
+
+.table-classic th {
+  background-color: #0f172a; /* slate-900 */
+  color: #ffffff;
+  font-weight: 800;
+  padding: 10px 12px;
+  border: 1px solid #1e293b;
+  white-space: nowrap;
+}
+
+.table-classic td {
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1; /* slate-300 */
+  color: #0f172a;
+}
+
+.table-classic tbody tr:nth-child(even) {
+  background-color: #f8fafc; /* slate-50 */
+}
+
+.table-classic tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table-classic tbody tr:hover {
+  background-color: #f1f5f9; /* slate-100 */
+}
+
+.table-classic tfoot td {
+  background-color: #f1f5f9;
+  font-weight: 800;
+  border-top: 2px solid #0f172a;
+}
+
+/* Financial Tables Zebra Striping & High-Contrast Readability */
+.table-zebra tbody tr:nth-child(even) {
+  background-color: rgba(248, 250, 252, 0.85); /* slate-50 */
+}
+.table-zebra tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+.table-zebra tbody tr:hover {
+  background-color: rgba(239, 246, 255, 0.75) !important; /* blue-50 */
+}
+
+.table-zebra-dark tbody tr:nth-child(even) {
+  background-color: rgba(30, 41, 59, 0.45);
+}
+.table-zebra-dark tbody tr:nth-child(odd) {
+  background-color: rgba(15, 23, 42, 0.55);
+}
+.table-zebra-dark tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.6) !important;
+}
+
+/* Glassmorphism & Modern UI Helpers */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-slate-200/50;
+}
+
+.table-modern {
+  @apply w-full text-right border-separate border-spacing-y-2;
+}
+
+.table-modern thead th {
+  @apply px-4 py-3 text-slate-500 font-bold text-xs uppercase tracking-wider;
+}
+
+.table-modern tbody tr {
+  @apply bg-white shadow-sm hover:shadow-md transition-all rounded-xl overflow-hidden;
+}
+
+.table-modern tbody td {
+  @apply px-4 py-4 border-y border-slate-100 first:border-r first:rounded-r-xl last:border-l last:rounded-l-xl text-sm;
+}
+
+.input-modern {
+  @apply w-full px-4 py-2.5 bg-slate-50/50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all;
+}
+
+.btn-modern {
+  @apply px-5 py-2.5 rounded-xl font-bold transition-all active:scale-95 flex items-center justify-center gap-2;
+}
